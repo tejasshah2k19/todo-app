@@ -7,7 +7,7 @@ public class UserBean {
 	String email;
 	String password;
 	int role;
-
+ 	
 	public enum Role {
 		ADMIN(1), USER(2);
 		int roleId;
