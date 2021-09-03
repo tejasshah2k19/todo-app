@@ -5,5 +5,7 @@
 <a href="signup">Signup</a>
 <br>
 <a href="login">Login</a>
+<br>
+<a href="users">List All Users</a>
 </body>
 </html>
