@@ -2,6 +2,7 @@ package com.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -34,9 +35,23 @@ public class SessionController {
 	}
 
 	@PostMapping("/authenticate")
-	public String authenticate(LoginBean loginBean) {
-
-		return "";
+	public String authenticate(LoginBean loginBean,Model model) {
+		UserBean user = userDao.authenticateUser(loginBean.getEmail(), loginBean.getPassword());
+		if (user == null) {
+			model.addAttribute("error","Invalid Credentials");
+			return "Login";
+		} else {
+			if(user.getRole() == UserBean.Role.USER.getRole()) {
+				return "Home";	//user 
+			}else if(user.getRole() == UserBean.Role.ADMIN.getRole()) {
+				return "Dashboard";//admin
+			}else {
+				model.addAttribute("error","Invalid Role ");
+				return "Login";
+				
+			}
+			
+		}
 	}
 
 }

@@ -27,7 +27,6 @@ public class UserDao {
 		return stmt.query("select * from users", new UserRowMapper());
 	}
 
-	
 	public List<UserBean> getAllUsersS() {
 
 		return stmt.query("select * from users", new BeanPropertyRowMapper<UserBean>(UserBean.class));
@@ -45,7 +44,32 @@ public class UserDao {
 		}
 	}
 
+	public void deleteUserById(int userId) {
+		stmt.update("delete from users where userid = ? ", userId);
+	}
+
+	public UserBean getUserById(int userId) {
+		UserBean user = stmt.queryForObject("select * from users where userid = ?",
+				new BeanPropertyRowMapper<UserBean>(UserBean.class), userId);
+		return user;
+	}
+
+	public void updateUser(UserBean user) {
+
+		stmt.update("update users set firstname = ? where userid  = ? ", user.getFirstName(), user.getUserId());
+	}
+
+	public UserBean authenticateUser(String email, String password) {
+
+		UserBean user = null;
+
+		try {
+			user = stmt.queryForObject("select * from users where email = ? and password = ?",
+					new BeanPropertyRowMapper<UserBean>(UserBean.class), email, password);
+		} catch (Exception e) {
+			user = null; 
+		}
+		return user;
+	}
+
 }
-
-
-
