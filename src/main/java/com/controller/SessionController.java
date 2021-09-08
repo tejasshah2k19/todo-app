@@ -1,5 +1,7 @@
 package com.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +28,12 @@ public class SessionController {
 		//
 		return "Login";
 	}
+	
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+			session.invalidate();
+			return "redirect:/login";
+	}
 
 	@PostMapping("/saveuser")
 	public String saveUser(UserBean user) {
@@ -35,16 +43,18 @@ public class SessionController {
 	}
 
 	@PostMapping("/authenticate")
-	public String authenticate(LoginBean loginBean,Model model) {
+	public String authenticate(LoginBean loginBean,Model model,HttpSession session) {
 		UserBean user = userDao.authenticateUser(loginBean.getEmail(), loginBean.getPassword());
 		if (user == null) {
 			model.addAttribute("error","Invalid Credentials");
 			return "Login";
 		} else {
+			//
+			session.setAttribute("user", user);//
 			if(user.getRole() == UserBean.Role.USER.getRole()) {
 				return "Home";	//user 
 			}else if(user.getRole() == UserBean.Role.ADMIN.getRole()) {
-				return "Dashboard";//admin
+				return "redirect:/dashboard";//admin
 			}else {
 				model.addAttribute("error","Invalid Role ");
 				return "Login";
