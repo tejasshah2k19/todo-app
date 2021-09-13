@@ -1,0 +1,9 @@
+user signup , edit ,delete ,
+
+login - functionality 
+admin - dashboard
+user - home 
+logout 
+add admin header using bootstrap 
+-------------------------------------------------------------------
+you need to add admin using db console 
