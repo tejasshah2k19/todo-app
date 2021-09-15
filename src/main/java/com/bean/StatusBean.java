@@ -9,7 +9,6 @@ public class StatusBean {
 	int statusId;
 	
 	@NotBlank(message="Please Enter Status")
-	@Max(value=25,message="Status should be less than 25 characters ")
 	String status;
 	
 	

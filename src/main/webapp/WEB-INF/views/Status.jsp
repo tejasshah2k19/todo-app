@@ -20,6 +20,7 @@
 				<tr>
 					<td>StatusId</td>
 					<td>Status</td>
+					<td>Description</td>
 					<td>Action</td>
 				</tr>
 			</thead>
@@ -30,6 +31,7 @@
 					<tr>
 						<td>${status.statusId}</td>
 						<td>${status.status}</td>
+						<td>${status.description}</td>
 						<td>Edit | Delete</td>
 					</tr>
 				</c:forEach>

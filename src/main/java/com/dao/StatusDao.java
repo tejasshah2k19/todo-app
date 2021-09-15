@@ -17,8 +17,9 @@ public class StatusDao {
 	JdbcTemplate tmplt;
 
 	public void insertStatus(StatusBean status) {
-		tmplt.update("insert into status (status) values (?)",status.getStatus());
-		
+		tmplt.update("insert into status (status,description) values (?,?)", status.getStatus(),
+				status.getDescription());
+
 	}
 
 	public List<StatusBean> getAllStatus() {

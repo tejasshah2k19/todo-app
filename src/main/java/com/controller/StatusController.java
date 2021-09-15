@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -42,7 +43,7 @@ public class StatusController {
 	}
 
 	@PostMapping("/savestatus")
-	public String saveStatus(@Valid StatusBean status, BindingResult result, Model model) {
+	public String saveStatus(@ModelAttribute("status") @Valid StatusBean status, BindingResult result, Model model) {
 		model.addAttribute("status", status);
 		if (result.hasErrors() == true) {
 			return "NewStatus";
