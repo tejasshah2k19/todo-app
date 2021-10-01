@@ -7,8 +7,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <style type="text/css">
-.error{
-	color:red;
+.error {
+	color: red;
 }
 </style>
 </head>
@@ -26,10 +26,11 @@
 
 		</form>
  --%>
-		<s:form action="savestatus"  modelAttribute="status" method="post">
-			Status : <s:input path="status" /> <s:errors cssClass="error" path="status"></s:errors>
+		<s:form action="savestatus" modelAttribute="status" method="post">
+			Status : <s:input path="status" />
+			<s:errors cssClass="error" path="status"></s:errors>
 			<br>
-			Description  : <s:input path="description"/>
+			Description  : <s:input path="description" />
 			<s:errors path="description"></s:errors>
 			<br>
 			<input type="submit" value="Save" />

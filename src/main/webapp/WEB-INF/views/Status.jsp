@@ -14,7 +14,7 @@
 	<div class="container">
 		<h2>All Status</h2>
 		<a href="newstatus">Add New Status</a>
-
+	${msg}
 		<table class="table table-border">
 			<thead>
 				<tr>
@@ -24,15 +24,14 @@
 					<td>Action</td>
 				</tr>
 			</thead>
-
 			<tbody>
-
 				<c:forEach items="${statuses}" var="status">
 					<tr>
 						<td>${status.statusId}</td>
 						<td>${status.status}</td>
 						<td>${status.description}</td>
-						<td>Edit | Delete</td>
+						<td>Edit | <a href="deletestatus/${status.statusId}">
+								Delete</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>

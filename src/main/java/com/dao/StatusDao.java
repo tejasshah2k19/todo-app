@@ -27,5 +27,9 @@ public class StatusDao {
 		return statuses;
 	}
 	//id status -> 5  -> BeanPR--> 5 
+
+	public void removeStatus(int statusId) {
+		tmplt.update("delete from status where statusId = ?",statusId);
+	}
 	
 }
