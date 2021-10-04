@@ -1,5 +1,7 @@
 package com.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,8 @@ public class ActivityController {
 	@GetMapping("/activities")
 	public String getAllActivities(Model model) {
 
+		List<ActivityBean> activities = activityDao.getAllActivities();
+		model.addAttribute("activities",activities);
 		return "Activities";
 	}
 
