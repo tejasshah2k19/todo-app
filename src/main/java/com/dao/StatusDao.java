@@ -12,7 +12,6 @@ import com.bean.StatusBean;
 @Repository
 public class StatusDao {
 
-	
 	@Autowired
 	JdbcTemplate tmplt;
 
@@ -23,13 +22,24 @@ public class StatusDao {
 	}
 
 	public List<StatusBean> getAllStatus() {
-		List<StatusBean> statuses = tmplt.query("select * from status",new BeanPropertyRowMapper<StatusBean>(StatusBean.class));
+		List<StatusBean> statuses = tmplt.query("select * from status",
+				new BeanPropertyRowMapper<StatusBean>(StatusBean.class));
 		return statuses;
 	}
-	//id status -> 5  -> BeanPR--> 5 
+	// id status -> 5 -> BeanPR--> 5
 
 	public void removeStatus(int statusId) {
-		tmplt.update("delete from status where statusId = ?",statusId);
+		tmplt.update("delete from status where statusId = ?", statusId);
 	}
-	
+
+	public StatusBean getStatusById(int statusId) {
+
+		return tmplt.queryForObject("select * from status where statusId = ?",
+				new BeanPropertyRowMapper<StatusBean>(StatusBean.class), statusId);
+	}
+
+	public void updateStatus(StatusBean status) {
+		tmplt.update("update status set status = ? , description = ? where statusId = ? ",status.getStatus(),status.getDescription(),status.getStatusId());
+	}
+
 }

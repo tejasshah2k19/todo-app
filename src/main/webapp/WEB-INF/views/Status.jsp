@@ -30,7 +30,8 @@
 						<td>${status.statusId}</td>
 						<td>${status.status}</td>
 						<td>${status.description}</td>
-						<td>Edit | <a href="deletestatus/${status.statusId}">
+						<td> <a href="editstatus/${status.statusId}">
+								Edit</a>  | <a href="deletestatus/${status.statusId}">
 								Delete</a></td>
 					</tr>
 				</c:forEach>

@@ -16,7 +16,17 @@ public class ActivityBean {
 	Date startDate;
 	Date endDate;
 
-	int status;
+	int statusId;//7 
+	String status; 
+	
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
 	public int getActivityId() {
 		return activityId;
@@ -58,12 +68,14 @@ public class ActivityBean {
 		this.endDate = endDate;
 	}
 
-	public int getStatus() {
-		return status;
+	public int getStatusId() {
+		return statusId;
 	}
 
-	public void setStatus(int status) {
-		this.status = status;
+	public void setStatusId(int statusId) {
+		this.statusId = statusId;
 	}
 
+ 
+	
 }

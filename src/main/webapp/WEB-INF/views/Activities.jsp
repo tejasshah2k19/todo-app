@@ -11,7 +11,7 @@
 	<h2>All Activities</h2>
 
 
-	<table  border="1">
+	<table border="1">
 		<thead>
 			<tr>
 				<td>ActivityId</td>
@@ -20,6 +20,7 @@
 				<td>StartDate</td>
 				<td>EndDate</td>
 				<td>status</td>
+				<td>action</td>
 			</tr>
 		</thead>
 		<c:forEach items="${activities}" var="activity">
@@ -30,9 +31,12 @@
 				<td>${activity.startDate}</td>
 				<td>${activity.endDate}</td>
 				<td>${activity.status}</td>
+				<td><a href="deleteactivity?activityId=${activity.activityId}">Delete</a>
+					View |
+					
+					<a href="editactivity?activityId=${activity.activityId}">Edit</a>
+				</td>
 			</tr>
-
-
 		</c:forEach>
 	</table>
 </body>

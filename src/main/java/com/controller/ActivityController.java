@@ -2,6 +2,7 @@ package com.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bean.ActivityBean;
 import com.dao.ActivityDao;
@@ -25,7 +28,7 @@ public class ActivityController {
 	public String getAllActivities(Model model) {
 
 		List<ActivityBean> activities = activityDao.getAllActivities();
-		model.addAttribute("activities",activities);
+		model.addAttribute("activities", activities);
 		return "Activities";
 	}
 
@@ -49,11 +52,30 @@ public class ActivityController {
 			// no error
 			// db insert
 			System.out.println("inserting acitivity.....");
-			activityBean.setStatus(7);// new
+			activityBean.setStatusId(7);// new
 			activityDao.insertActivity(activityBean);
 			return "Home";
 		}
 
 	}
 
+	@GetMapping("/deleteactivity") // ?activityId=12
+//	public String deleteActivity(HttpServletRequest request) {
+	public String deleteActivity(@RequestParam("activityId") int activityId) {
+		activityDao.deleteActivity(activityId);
+		return "redirect:/activities";
+	}
+
+	@GetMapping("/editactivity")
+	public String editActivity(@RequestParam("activityId") int activityId,Model model) {
+		ActivityBean activity = activityDao.getActivityById(activityId);
+		model.addAttribute("activity",activity);
+		return "EditActivity";
+	}
+
+	@PostMapping("/updateactivity")
+	public String updateActivity(ActivityBean activity) {
+		System.out.println("Activity updated....");
+		return "redirect:/activities";
+	}
 }

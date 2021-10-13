@@ -16,16 +16,27 @@ public class ActivityDao {
 	JdbcTemplate tmplt;
 
 	public void insertActivity(ActivityBean activityBean) {
-		tmplt.update("insert into activities (title,description,startdate,enddate,status)  values (?,?,?,?,?)",
+		tmplt.update("insert into activities (title,description,startdate,enddate,statusid)  values (?,?,?,?,?)",
 				activityBean.getTitle(), activityBean.getDescription(), activityBean.getStartDate(),
-				activityBean.getEndDate(), activityBean.getStatus());
+				activityBean.getEndDate(), activityBean.getStatusId());
 	}
 
 	public List<ActivityBean> getAllActivities() {
-		List<ActivityBean> activities = tmplt.query("select * from activities",
+		List<ActivityBean> activities = tmplt.query(
+				"select a.activityid,a.title,a.description,a.startdate,a.enddate,s.status from activities a,status s where a.statusid= s.statusid",
 				new BeanPropertyRowMapper<ActivityBean>(ActivityBean.class));
 
 		return activities;
 	}
 
+	public void deleteActivity(int activityId) {
+		tmplt.update("delete from activities where activityid = ?", activityId);
+	}
+
+	public ActivityBean getActivityById(int activityId) {
+
+		return tmplt.queryForObject("select * from activities where activityid = ?",
+				new BeanPropertyRowMapper<ActivityBean>(ActivityBean.class), activityId);
+
+	}
 }
