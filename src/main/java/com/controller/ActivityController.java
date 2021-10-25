@@ -17,12 +17,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bean.ActivityBean;
 import com.dao.ActivityDao;
+import com.dao.StatusDao;
 
 @Controller
 public class ActivityController {
 
 	@Autowired
 	ActivityDao activityDao;
+	@Autowired
+	StatusDao statusDao;
 
 	@GetMapping("/activities")
 	public String getAllActivities(Model model) {
@@ -70,12 +73,16 @@ public class ActivityController {
 	public String editActivity(@RequestParam("activityId") int activityId,Model model) {
 		ActivityBean activity = activityDao.getActivityById(activityId);
 		model.addAttribute("activity",activity);
+		
+		model.addAttribute("status",statusDao.getAllStatus());
 		return "EditActivity";
 	}
 
 	@PostMapping("/updateactivity")
 	public String updateActivity(ActivityBean activity) {
 		System.out.println("Activity updated....");
+		activityDao.updateActivity(activity);
+		
 		return "redirect:/activities";
 	}
 }

@@ -39,4 +39,8 @@ public class ActivityDao {
 				new BeanPropertyRowMapper<ActivityBean>(ActivityBean.class), activityId);
 
 	}
+
+	public void updateActivity(ActivityBean activity) {
+		tmplt.update("update activities set statusId = ? where activityId = ?",activity.getStatusId(),activity.getActivityId());
+	}
 }
