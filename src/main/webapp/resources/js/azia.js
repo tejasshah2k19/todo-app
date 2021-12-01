@@ -117,30 +117,30 @@ $(function(){
     e.preventDefault();
     $('body').removeClass('az-header-menu-show');
   })
-  function appendBanner() {
-    if ($.cookie('view-pro-banner-azia')!="true") {
-      $("body").addClass("purchase-banner-active");
-      $("body").prepend('\
-        <div class= "item-purchase-banner">\
-          <p class="banner-text">Free 24/7 customer support, updates, and more with this template!</p>\
-            <a href="https://www.bootstrapdash.com/product/azia-admin/?utm_source=organic&utm_medium=banner&utm_campaign=getpro" target="_blank" class= "banner-button btn btn-primary ml-auto">\
-              <i class="mdi mdi-cart"></i> Buy Now\
-            </a>\
-            <span class="toggler-close"><i class="typcn typcn-delete-outline"></i></span>\
-        </div>\
-      ')
-      $(".item-purchase-banner .toggler-close").on("click", function () {
-        $(".item-purchase-banner").slideUp(300);
-        $("body").removeClass("purchase-banner-active");
+//  function appendBanner() {
+//    if ($.cookie('view-pro-banner-azia')!="true") {
+//      $("body").addClass("purchase-banner-active");
+//      $("body").prepend('\
+//        <div class= "item-purchase-banner">\
+//          <p class="banner-text">Free 24/7 customer support, updates, and more with this template!</p>\
+//            <a href="https://www.bootstrapdash.com/product/azia-admin/?utm_source=organic&utm_medium=banner&utm_campaign=getpro" target="_blank" class= "banner-button btn btn-primary ml-auto">\
+//              <i class="mdi mdi-cart"></i> Buy Now\
+//            </a>\
+//            <span class="toggler-close"><i class="typcn typcn-delete-outline"></i></span>\
+//        </div>\
+//      ')
+//      $(".item-purchase-banner .toggler-close").on("click", function () {
+//        $(".item-purchase-banner").slideUp(300);
+//        $("body").removeClass("purchase-banner-active");
+//
+//        var date = new Date();
+//        date.setTime(date.getTime() + 24 * 60 * 60 * 1000); 
+//        $.cookie('view-pro-banner-azia', "true", { expires: date });
+//
+//      });
+//    }
+//  }
 
-        var date = new Date();
-        date.setTime(date.getTime() + 24 * 60 * 60 * 1000); 
-        $.cookie('view-pro-banner-azia', "true", { expires: date });
-
-      });
-    }
-  }
-
-  appendBanner();
+ // appendBanner();
 
 });

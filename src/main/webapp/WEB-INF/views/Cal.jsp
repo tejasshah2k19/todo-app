@@ -55,8 +55,7 @@
 									Monitoring</a> <a href="dashboard-ten.html" class="nav-link">Product
 									Management</a>
 							</nav>
-						</div>
-						<!-- az-menu-sub --></li>
+						</div> <!-- az-menu-sub --></li>
 					<li class="nav-item active"><a href=""
 						class="nav-link with-sub"><i class="typcn typcn-folder"></i>
 							Apps</a>
