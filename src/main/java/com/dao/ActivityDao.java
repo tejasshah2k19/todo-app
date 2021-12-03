@@ -16,9 +16,9 @@ public class ActivityDao {
 	JdbcTemplate tmplt;
 
 	public void insertActivity(ActivityBean activityBean) {
-		tmplt.update("insert into activities (title,description,startdate,enddate,statusid)  values (?,?,?,?,?)",
+		tmplt.update("insert into activities (title,description,startdate,enddate,statusid,userid)  values (?,?,?,?,?,?)",
 				activityBean.getTitle(), activityBean.getDescription(), activityBean.getStartDate(),
-				activityBean.getEndDate(), activityBean.getStatusId());
+				activityBean.getEndDate(), activityBean.getStatusId(),activityBean.getUserId());
 	}
 
 	public List<ActivityBean> getAllActivities() {

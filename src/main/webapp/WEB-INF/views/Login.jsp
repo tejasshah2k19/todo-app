@@ -78,16 +78,13 @@
 				<h4>Please sign in to continue</h4>
 
 				<form action="authenticate" method="post">
-
- 
-
 					<div class="form-group">
-						<label>Email</label> <input type="text" class="form-control"
+						<label>Email</label> <input type="text" name="email" class="form-control"
 							placeholder="Enter your email">
 					</div>
 					<!-- form-group -->
 					<div class="form-group">
-						<label>Password</label> <input type="password"
+						<label>Password</label> <input type="password" name="password"
 							class="form-control" placeholder="Enter your password">
 					</div>
 					<!-- form-group -->
@@ -115,6 +112,20 @@
 	<!--     <script src="resources/js/jquery.cookie.js" type="text/javascript"></script>
     <script src="resources/js/jquery.cookie.js" type="text/javascript"></script>
  -->
-<jsp:include page="adminlayout/AdminFooter.jsp"></jsp:include>
+	<jsp:include page="adminlayout/AdminFooter.jsp"></jsp:include>
+
+<script>
+<%
+
+	String error = (String)request.getAttribute("error");
+	if(error !=null){
+%>
+	alert("<%=error%>");
+<%
+	}
+%>
+</script>
+
+
 </body>
 </html>

@@ -45,6 +45,8 @@ public class SessionController {
 	@PostMapping("/authenticate")
 	public String authenticate(LoginBean loginBean,Model model,HttpSession session) {
 		UserBean user = userDao.authenticateUser(loginBean.getEmail(), loginBean.getPassword());
+		System.out.println(loginBean.getEmail());
+		System.out.println(loginBean.getPassword());
 		if (user == null) {
 			model.addAttribute("error","Invalid Credentials");
 			return "Login";
@@ -58,7 +60,6 @@ public class SessionController {
 			}else {
 				model.addAttribute("error","Invalid Role ");
 				return "Login";
-				
 			}
 			
 		}

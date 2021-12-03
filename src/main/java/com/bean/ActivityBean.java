@@ -7,7 +7,7 @@ import org.hibernate.validator.constraints.NotBlank;
 public class ActivityBean {
 
 	int activityId;
-
+	int userId;
 	@NotBlank(message = "Please Enter Title")
 	String title;
 	@NotBlank(message = "Please Enter Description")
@@ -19,6 +19,16 @@ public class ActivityBean {
 	int statusId;//7 
 	String status; 
 	
+	
+	
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
 
 	public String getStatus() {
 		return status;

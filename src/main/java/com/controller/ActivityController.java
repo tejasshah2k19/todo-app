@@ -3,6 +3,7 @@ package com.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bean.ActivityBean;
+import com.bean.UserBean;
 import com.dao.ActivityDao;
 import com.dao.StatusDao;
 
@@ -43,7 +45,7 @@ public class ActivityController {
 
 	@PostMapping("activity")
 	public String saveActivity(@ModelAttribute("activity") @Valid ActivityBean activityBean, BindingResult result,
-			Model model) {
+			Model model, HttpSession session) {
 
 		if (result.hasErrors()) {
 			// error
@@ -54,8 +56,10 @@ public class ActivityController {
 		} else {
 			// no error
 			// db insert
+			UserBean user = (UserBean) session.getAttribute("user");
 			System.out.println("inserting acitivity.....");
 			activityBean.setStatusId(7);// new
+			activityBean.setUserId(user.getUserId());// setting user's id to current activity....
 			activityDao.insertActivity(activityBean);
 			return "Home";
 		}
@@ -70,11 +74,11 @@ public class ActivityController {
 	}
 
 	@GetMapping("/editactivity")
-	public String editActivity(@RequestParam("activityId") int activityId,Model model) {
+	public String editActivity(@RequestParam("activityId") int activityId, Model model) {
 		ActivityBean activity = activityDao.getActivityById(activityId);
-		model.addAttribute("activity",activity);
-		
-		model.addAttribute("status",statusDao.getAllStatus());
+		model.addAttribute("activity", activity);
+
+		model.addAttribute("status", statusDao.getAllStatus());
 		return "EditActivity";
 	}
 
@@ -82,7 +86,7 @@ public class ActivityController {
 	public String updateActivity(ActivityBean activity) {
 		System.out.println("Activity updated....");
 		activityDao.updateActivity(activity);
-		
+
 		return "redirect:/activities";
 	}
 }
