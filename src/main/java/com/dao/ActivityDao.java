@@ -16,9 +16,10 @@ public class ActivityDao {
 	JdbcTemplate tmplt;
 
 	public void insertActivity(ActivityBean activityBean) {
-		tmplt.update("insert into activities (title,description,startdate,enddate,statusid,userid)  values (?,?,?,?,?,?)",
+		tmplt.update(
+				"insert into activities (title,description,startdate,enddate,statusid,userid)  values (?,?,?,?,?,?)",
 				activityBean.getTitle(), activityBean.getDescription(), activityBean.getStartDate(),
-				activityBean.getEndDate(), activityBean.getStatusId(),activityBean.getUserId());
+				activityBean.getEndDate(), activityBean.getStatusId(), activityBean.getUserId());
 	}
 
 	public List<ActivityBean> getAllActivities() {
@@ -41,6 +42,14 @@ public class ActivityDao {
 	}
 
 	public void updateActivity(ActivityBean activity) {
-		tmplt.update("update activities set statusId = ? where activityId = ?",activity.getStatusId(),activity.getActivityId());
+		tmplt.update("update activities set statusId = ? where activityId = ?", activity.getStatusId(),
+				activity.getActivityId());
+	}
+
+	public List<ActivityBean> getCurrentMonthActivity(int userId) {
+
+		return tmplt.query("select * from activities where userid = " + userId,
+				new BeanPropertyRowMapper<ActivityBean>(ActivityBean.class));
+
 	}
 }

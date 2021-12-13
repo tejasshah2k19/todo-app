@@ -23,12 +23,12 @@
 <body>
 <body data-new-gr-c-s-check-loaded="14.1036.0" data-gr-ext-installed="">
 
-	 
-	 
-	 	<jsp:include page="adminlayout/AdminHeader.jsp"></jsp:include>
-	 
-	 
-	 			   
+
+
+	<jsp:include page="adminlayout/AdminHeader.jsp"></jsp:include>
+
+
+
 
 	<div class="az-content az-content-calendar">
 		<div class="container">
@@ -852,11 +852,11 @@
 	</div>
 	<!-- az-content -->
 
-	
 
 
-	 	<jsp:include page="adminlayout/AdminFooter.jsp"></jsp:include>
-	 
+
+	<jsp:include page="adminlayout/AdminFooter.jsp"></jsp:include>
+
 	<!-- az-footer -->
 
 	<div class="modal az-modal-calendar-schedule" id="modalSetSchedule"
@@ -1182,30 +1182,7 @@
 }
 </style>
 </body>
-<script src="jquery.min.js"></script>
-<script src="moment.min.js"></script>
-<script src="datepicker.js"></script>
-<script src="bootstrap.bundle.min.js"></script>
-<script src="ionicons.js"></script>
-<script src="fullcalendar.min.js"></script>
-<script src="select2.full.min.js"></script>
 
-<script src="azia.js"></script>
-<script src="app-calendar-events.js"></script>
-<script src="app-calendar.js"></script>
-<script>
-	$(function() {
-		'use strict'
-
-		$('.select2-modal').select2({
-			minimumResultsForSearch : Infinity,
-			dropdownCssClass : 'az-select2-dropdown-modal',
-		});
-
-		$('#dateToday').text(moment().format('ddd, MMMM DD YYYY'));
-
-	});
-</script>
 
 
 </body>

@@ -58,6 +58,11 @@ public class ActivityController {
 			// db insert
 			UserBean user = (UserBean) session.getAttribute("user");
 			System.out.println("inserting acitivity.....");
+			if (user == null) {
+				user = new UserBean();
+				user.setUserId(1);
+			}
+			
 			activityBean.setStatusId(7);// new
 			activityBean.setUserId(user.getUserId());// setting user's id to current activity....
 			activityDao.insertActivity(activityBean);
@@ -89,4 +94,18 @@ public class ActivityController {
 
 		return "redirect:/activities";
 	}
+
+	@GetMapping("/currentmonth")
+	public String getCurrentMonthActivity(Model model, HttpSession session) {
+		UserBean user = (UserBean) session.getAttribute("user");
+		if (user == null) {
+			user = new UserBean();
+			user.setUserId(1);
+		}
+		List<ActivityBean> activities = activityDao.getCurrentMonthActivity(user.getUserId());
+		System.out.println(activities.size());
+		model.addAttribute("activities", activities);
+		return "CurrentMonthActivities";
+	}
+
 }

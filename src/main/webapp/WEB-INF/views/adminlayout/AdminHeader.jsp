@@ -3,6 +3,8 @@
 <link href="resources/css/all.min.css" rel="stylesheet">
 <link href="resources/css/ionicons.min.css" rel="stylesheet">
 <link href="resources/css/typicons.css" rel="stylesheet">
+<link href="resources/css/fullcalendar.min.css" rel="stylesheet">
+<link href="resources/css/fullcalmain.css" rel="stylesheet">
 
 <!-- azia CSS -->
 <link rel="stylesheet" href="resources/css/azia.css">
@@ -26,10 +28,9 @@
 				<li class="nav-item active"><a href="dashboard"
 					class="nav-link"><i class="typcn typcn-chart-area-outline"></i>Dashboard</a>
 				</li>
-				
-				<li class="nav-item"><a href="cal"
-					class="nav-link"><i class="typcn typcn-chart-area-outline"></i>My Activities</a>
-				</li>
+
+				<li class="nav-item"><a href="cal" class="nav-link"><i
+						class="typcn typcn-chart-area-outline"></i>My Activities</a></li>
 				<!--  <li class="nav-item">
               <a href="" class="nav-link with-sub"><i class="typcn typcn-document"></i> Pages</a>
               <nav class="az-menu-sub">

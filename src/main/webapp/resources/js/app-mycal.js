@@ -82,9 +82,7 @@ $(function(){
         titleFormat: 'MMMM YYYY'
       }
     },
-    
-    eventSources: [azCalendarEvents, azBirthdayEvents, azHolidayEvents, azOtherEvents],
-    
+    eventSources: [myEvents],
     eventAfterAllRender: function(view) {
       if(view.name === 'listMonth' || view.name === 'listWeek') {
         var dates = view.el.find('.fc-list-heading-main');

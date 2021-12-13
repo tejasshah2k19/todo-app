@@ -10,5 +10,6 @@
 	<h2>Welcome user , ${user.firstName }</h2>
 	<a href="activities">All Activities</a> |
 	<a href="activity">Add Activity</a>
+	<a href="currentmonth">Current Month's Activity</a>
 </body>
 </html>
