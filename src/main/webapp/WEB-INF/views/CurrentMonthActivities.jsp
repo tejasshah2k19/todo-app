@@ -313,7 +313,7 @@
 	<script src="resources/js/datepicker.js"></script>
 	<script src="resources/js/bootstrap.bundle.min.js"></script>
 	<script src="resources/js/ionicons.js"></script>
-	<script src="resources/js/fullcalendar.min.js"></script>
+	<!-- <script src="resources/js/fullcalendar.min.js"></script> -->
 	<script src="resources/js/select2.full.min.js"></script>
 
 	<script src="resources/js/azia.js"></script>

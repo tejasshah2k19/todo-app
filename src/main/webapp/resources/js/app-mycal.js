@@ -39,7 +39,7 @@ $(function(){
       return time.replace(periods[0], periods[1])
     }));
 
-    //console.log(times);
+    // console.log(times);
     $.each(times, function(index, val){
       $(element).append('<option value="'+val+'">'+val+'</option>');
     });
@@ -58,6 +58,27 @@ $(function(){
     selectable: true,
     selectLongPressDelay: 100,
     editable: true,
+//    eventResize:function()   {
+//        alert("resize");
+//     },
+//    eventChange:function(){alert("change");},
+    eventDragStop:function(e){//alert(e);
+    	console.log(e);
+    	console.log(typeof(e));
+    	console.log(e.view); 
+    },
+//    eventDragStart:function(e){//alert(e);
+//    	console.log(e);
+//    	 
+//    },
+    eventDrop:function(e){//alert(e);
+    	console.log("drop...=>")
+    	console.log(e);
+    	console.log(e.start);
+    	console.log(e.start._d);
+        
+    },
+    
     nowIndicator: true,
     defaultView: 'listMonth',
     views: {
@@ -94,7 +115,7 @@ $(function(){
           if(now === text[1]) { $(this).addClass('now'); }
         });
       }
-
+    
       console.log(view.el);
     },
     eventRender: function(event, element) {
@@ -171,7 +192,7 @@ $(function(){
     modal.find('.event-start-date').text(moment(calEvent.start).format('LLL'));
     modal.find('.event-end-date').text(moment(calEvent.end).format('LLL'));
 
-    //styling
+    // styling
     modal.find('.modal-header').css('backgroundColor', (calEvent.source.borderColor)? calEvent.source.borderColor : calEvent.borderColor);
   });
 
@@ -202,4 +223,18 @@ $(function(){
     }
   });
 
+  // Removing events to avoid duplication
+//  $('#calendar').fullCalendar( 'eventChange', function (event) {
+//	  alert("#changes....")
+//  });
+//  
+//  $('#calendar').fullCalendar( 'eventResize', function (event) {
+//	  alert("#changes....")
+//  });
+//  
+
+//
+//$('#calendar').fullCalendar( 'eventDragStop', function (event) {
+//	  alert("#changes....")
+//});
 })
